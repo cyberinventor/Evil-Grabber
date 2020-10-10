@@ -80,7 +80,7 @@ def evil():
             f.close()
             os.remove(".user.txt")
         else:
-            os.system("echo $USER")
+            os.system("echo $USER > .user.txt")
             f = open(".user.txt")
             print(f"\nExiting Bye Bye \u001b[32m{f.read()}\u001b[31m"+ "Love you i am your computer\u001b[0m")
             f.close()
