@@ -14,7 +14,7 @@ cd Evil-Grabber
 ```
 pip3 install -r requirements.txt
 ```
-* to do it automatically and run the program automatically*
+* to do it automatically and run the program automatically *
 ```
 bash install.sh
 ```
