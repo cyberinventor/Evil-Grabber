@@ -10,11 +10,11 @@ git clone https://github.com/cyberinventor/Evil-Grabber/
 cd Evil-Grabber
 ```
 # you can now run the install.sh script or you can do it manually
-**to do it manully**
+* to do it manully
 ```
 pip3 install -r requirements.txt
 ```
-* to do it automatically and run the program automatically *
+* to do it automatically and run the program automatically
 ```
 bash install.sh
 ```
