@@ -8,13 +8,12 @@ import sys
 class banner():
     """For Beginners new to coding and want to experiment or learn
     from my code the values are down below
-    
-    red = \u001b[31m,
-    green = \u001b[32m
-    yellow = \u001b[33m
-    blue = \u001b[34m
-    reset = \u001b[0m
     """
+    red = "\u001b[31m"
+    green = "\u001b[32m"
+    yellow = "\u001b[33m"
+    blue = "\u001b[34m"
+    reset = "\u001b[0m"
     
     banner = """
 \u001b[31m
