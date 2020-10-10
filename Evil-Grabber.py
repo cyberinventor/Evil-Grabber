@@ -24,15 +24,17 @@ class banner():
 █▀▀ █░█ █ █░░   █▀▀ █▀█ ▄▀█ █▄▄ █▄▄ █▀▀ █▀█
 ██▄ ▀▄▀ █ █▄▄   █▄█ █▀▄ █▀█ █▄█ █▄█ ██▄ █▀▄
 
+
+[\u001b[0m 1 \u001b[31m] \u001b[0m gather phoneinfo\u001b[31m
+\nplatform: \u001b[0mwindows\u001b[31m
     """
     if platform.system() == str("Windows"):
         os.system("cls")
         print(banner)
-        print("[\u001b[0m 1 \u001b[31m] \u001b[0m gather phoneinfo\u001b[31m")
-        print("\nplatform: \u001b[0mwindows\u001b[31m\n")
-    else:
-        os.system("clear")
-        print(banner)
+    elif platform.system() == "Darwin":
+        print(banner.replace("windows", "darwin"))
+    elif platform.system() == "Linux":
+        print(banner.replace("windows", "linux"))
     
 def evil():
     try:
@@ -64,20 +66,19 @@ def evil():
                     print(r.text, "\u001b[31m")
                     f = open("results.txt", "a")
                     f.write(f"\n{r.text}\n")
-                    if r.text in f.read():
-                        print("\u001b[32mwrote info in results.txt")
-                    
+                    print("\u001b[32mwrote info in results.txt\u001b[31m")
+                    print(banner().banner)
     except KeyboardInterrupt:
         if platform.system() == str("Windows"):
             os.system("echo %username% > .user.txt")
             f = open(".user.txt")
-            print(f"\nExiting Bye Bye {f.read()} Love you i am your computer")
+            print(f"\nExiting Bye Bye \u001b[32m{f.read()}\u001b[31m"+ "Love you i am your computer")
             f.close()
             os.remove(".user.txt")
         else:
             os.system("echo $USER")
             f = open(".user.txt")
-            print(f"\nExiting Bye Bye {f.read()} Love you i am your computer")
+            print(f"\nExiting Bye Bye \u001b[32m{f.read()}\u001b[31m"+ "Love you i am your computer\u001b[0m")
             f.close()
             os.remove(".user.txt")
         print("\u001b[0m")
