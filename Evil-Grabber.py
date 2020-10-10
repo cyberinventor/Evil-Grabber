@@ -64,7 +64,12 @@ def evil():
                     f = open("results.txt", "a")
                     f.write(f"\n{r.text}\n")
                     print("\u001b[32mwrote info in results.txt\u001b[31m")
-                    print(banner().banner)
+                    if platform.system() == "Windows":
+                        print(banner().banner)
+                    elif platform.system() == "Darwin":
+                        print(banner().banner.replace("windows", "darwin"))
+                    elif platform.system() == "Linux":
+                        print(banner().banner.replace("windows", "linux"))
     except KeyboardInterrupt:
         if platform.system() == str("Windows"):
             os.system("echo %username% > .user.txt")
