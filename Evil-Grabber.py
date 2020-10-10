@@ -29,8 +29,10 @@ class banner():
         os.system("cls")
         print(banner)
     elif platform.system() == "Darwin":
+        os.system("clear")
         print(banner.replace("windows", "darwin"))
     elif platform.system() == "Linux":
+        os.system("clear")
         print(banner.replace("windows", "linux"))
     
 def evil():
