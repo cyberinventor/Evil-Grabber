@@ -3,8 +3,6 @@ import phonenumbers
 from phonenumbers import timezone, geocoder, carrier
 import platform
 import requests
-import threading
-import time
 import sys
 
 class banner():
