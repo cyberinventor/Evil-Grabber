@@ -6,18 +6,6 @@ import requests
 import time
 import sys
 
-def check():
-    url = "http://www.kite.com"
-    timeout = 5
-    f = open(".connection.txt", "w")
-    try:
-        request = requests.get(url, timeout=timeout)
-        print("Connected to the Internet")
-        f.write("Connected")
-    except (requests.ConnectionError, requests.Timeout) as exception:
-        print("No internet connection.")
-        f.write("Not connected")
-check()
 class banner():
     """For Beginners new to coding and want to experiment or learn
     from my code the values are down below
@@ -51,6 +39,7 @@ class banner():
 def evil():
     try:
         while True:
+            
             banner()
             options = input("option: ")
             if options == str("1"):
@@ -63,24 +52,21 @@ def evil():
                 valid = phonenumbers.is_valid_number(phone)
                 possible = phonenumbers.is_possible_number(phone)
             
-                print(f"""
-\u001b[34m[\u001b[32m {phone} \u001b[34m]
-\u001b[34m[\u001b[32m Timezone: {time_zone} \u001b[34m]
-\u001b[34m[\u001b[32m Carrier: {carrier_name} \u001b[34m]
-\u001b[34m[\u001b[32m Region: {region} \u001b[34m]
-\u001b[34m[\u001b[32m Valid: {valid} \u001b[34m]
-\u001b[34m[\u001b[32m Possible: {possible} \u001b[34m]
-\u001b[33mobtaining more info\u001b[33m
-""")
-                r = requests.get(f"https://truecaller.shadowbrokers.repl.co/?phonenumber={phonenumber}&get_info=Submit")
-                f = open(".connection.txt")
-                if (f.read() == "Connected"):
-                    if r.status_code == 200:
-                        r = requests.get(f"https://truecaller.shadowbrokers.repl.co/output.txt")
-                        print(r.text, "\u001b[31m")
-                        f = open("results.txt", "a")
-                        f.write(f"""Date: {time.ctime()}
+                try:
+                    r = requests.get(f"https://truecaller.shadowbrokers.repl.co/?phonenumber={phonenumber}&get_info=Submit")
+                    r = requests.get("https://truecaller.shadowbrokers.repl.co/output.txt")
+                    print(f"""
 [ {phone} ]
+[ Timezone: {time_zone} ]
+[ Carrier: {carrier_name} ]
+[ Region: {region} ]
+[ Valid: {valid} ]
+[ Possible: {possible} ]
+{r.text}
+""")
+                    print("\u001b[32mwrote results to results.txt\u001b[31m")
+                    f = open("results.txt", "a")
+                    f.write(f"""[ {phone} ]
 [ Timezone: {time_zone} ]
 [ Carrier: {carrier_name} ]
 [ Region: {region} ]
@@ -89,42 +75,42 @@ def evil():
 obtaining more info
 {r.text}\n
 """)
-                        f.close()
-                        print("\u001b[32mwrote info in results.txt\u001b[31m")
-                        if platform.system() == "Windows":
-                            print(banner().banner)
-                        elif platform.system() == "Darwin":
-                            print(banner().banner.replace("windows", "darwin"))
-                        elif platform.system() == "Linux":
-                            print(banner().banner.replace("windows", "linux"))
+                    f.close()
+                    if platform.system() == str("Windows"):
+                        print(banner().banner)
+                    elif platform.system() == str("Linux"):
+                        print(banner().banner.replace("windows", "linux"))
+                    elif platform.system() == str("Darwin"):
+                        print(banner().banner.replace("windows", "darwin"))
 
-                        f.close()
-                        os.remove(".connection.txt")
-                elif (f.read() == "Not connected"):
-                    print("""[ Timezone: {time_zone} ]
-[ Carrier: {carrier_name} ]
-[ Region: ]
-[ Valid: {valid} ]
-[ Possible: {possible} ]
-obtaining more info internet not connected""")
+                except (requests.ConnectionError, requests.Timeout) as exception:
+                    print(f"""
+\u001b[34m[\u001b[32m {phone} \u001b[34m]
+\u001b[34m[\u001b[32m Timezone: {time_zone} \u001b[34m]
+\u001b[34m[\u001b[32m Carrier: {carrier_name} \u001b[34m]
+\u001b[34m[\u001b[32m Region: {region} \u001b[34m]
+\u001b[34m[\u001b[32m Valid: {valid} \u001b[34m]
+\u001b[34m[\u001b[32m Possible: {possible} \u001b[34m]
+\u001b[33mobtaining more info
+Unable to obtain more info no internet access\u001b[33m
+""")
                     f = open("results.txt", "a")
-                    f.write(f"""Date: {time.ctime()}
-[ {phone} ]
+                    f.write(f"""[ {phone} ]
 [ Timezone: {time_zone} ]
 [ Carrier: {carrier_name} ]
-[ Region: ]
+[ Region: {region} ]
 [ Valid: {valid} ]
 [ Possible: {possible} ]
-obtaining more info internet not connected so cannot obtain more info
+obtaining more info
+Unable to obtain more info no internet access
 """)
                     f.close()
-                    if platform.system() == "Windows":
+                    if platform.system() == str("Windows"):
                         print(banner().banner)
-                    elif platform.system() == "Darwin":
-                        print(banner().banner.replace("windows", "darwin"))
-                    elif platform.system() == "Linux":
+                    elif platform.system() == str("Linux"):
                         print(banner().banner.replace("windows", "linux"))
-                    os.remove(".connection.txt")
+                    elif platform.system() == str("Darwin"):
+                        print(banner().banner.replace("windows", "darwin"))
     except KeyboardInterrupt:
         if platform.system() == str("Windows"):
             os.system("echo %username% > .user.txt")
