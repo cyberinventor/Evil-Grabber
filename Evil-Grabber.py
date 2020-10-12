@@ -5,6 +5,7 @@ import platform
 import requests
 import time
 import sys
+import keyboard
 
 class banner():
     """For Beginners new to coding and want to experiment or learn
@@ -39,12 +40,14 @@ class banner():
 def evil():
     try:
         while True:
-            
             banner()
             options = input("option: ")
             if options == str("1"):
+                print("to go back to the home screen press: q")
                 phonenumber = input("phonenumber: ")
-
+                if keyboard.is_pressed("q"):
+                    os.system("python evilgrabber.py")
+                
                 phone = phonenumbers.parse("+"+phonenumber)
                 time_zone = timezone.time_zones_for_number(phone)
                 carrier_name = carrier.name_for_number(phone, 'en')
@@ -56,15 +59,16 @@ def evil():
                     r = requests.get(f"https://truecaller.shadowbrokers.repl.co/?phonenumber={phonenumber}&get_info=Submit")
                     r = requests.get("https://truecaller.shadowbrokers.repl.co/output.txt")
                     print(f"""
-[ {phone} ]
-[ Timezone: {time_zone} ]
-[ Carrier: {carrier_name} ]
-[ Region: {region} ]
-[ Valid: {valid} ]
-[ Possible: {possible} ]
+\u001b[34m[ \u001b[32m{phone} \u001b[34m]
+\u001b[34m[ \u001b[32mTimezone: {time_zone} \u001b[34m]
+\u001b[34m[ \u001b[32mCarrier: {carrier_name} \u001b[34m]
+\u001b[34m[ \u001b[32mRegion: {region} \u001b[34m]
+\u001b[34m[ \u001b[32mValid: {valid} \u001b[34m]
+\u001b[34m[ \u001b[32mPossible: {possible} \u001b[34m]
+\u001b[33m
 {r.text}
+\u001b[32mwrote results to results.txt\u001b[31m
 """)
-                    print("\u001b[32mwrote results to results.txt\u001b[31m")
                     f = open("results.txt", "a")
                     f.write(f"""[ {phone} ]
 [ Timezone: {time_zone} ]
@@ -93,6 +97,8 @@ obtaining more info
 \u001b[34m[\u001b[32m Possible: {possible} \u001b[34m]
 \u001b[33mobtaining more info
 Unable to obtain more info no internet access\u001b[33m
+
+\u001b[32mwrote results to results.txt\u001b[31m
 """)
                     f = open("results.txt", "a")
                     f.write(f"""[ {phone} ]
