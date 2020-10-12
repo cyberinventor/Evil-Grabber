@@ -3,8 +3,21 @@ import phonenumbers
 from phonenumbers import timezone, geocoder, carrier
 import platform
 import requests
+import time
 import sys
 
+def check():
+    url = "http://www.kite.com"
+    timeout = 5
+    f = open(".connection.txt", "w")
+    try:
+        request = requests.get(url, timeout=timeout)
+        print("Connected to the Internet")
+        f.write("Connected")
+    except (requests.ConnectionError, requests.Timeout) as exception:
+        print("No internet connection.")
+        f.write("Not connected")
+check()
 class banner():
     """For Beginners new to coding and want to experiment or learn
     from my code the values are down below
@@ -60,26 +73,58 @@ def evil():
 \u001b[33mobtaining more info\u001b[33m
 """)
                 r = requests.get(f"https://truecaller.shadowbrokers.repl.co/?phonenumber={phonenumber}&get_info=Submit")
-                if r.status_code == 200:
-                    r = requests.get(f"https://truecaller.shadowbrokers.repl.co/output.txt")
-                    print(r.text, "\u001b[31m")
-                    f = open("results.txt", "a")
-                    f.write(f"""[ {phone} ]
+                f = open(".connection.txt")
+                if (f.read() == "Connected"):
+                    if r.status_code == 200:
+                        r = requests.get(f"https://truecaller.shadowbrokers.repl.co/output.txt")
+                        print(r.text, "\u001b[31m")
+                        f = open("results.txt", "a")
+                        f.write(f"""Date: {time.ctime()}
+[ {phone} ]
 [ Timezone: {time_zone} ]
 [ Carrier: {carrier_name} ]
 [ Region: {region} ]
 [ Valid: {valid} ]
-[ Possible {possible} ]
+[ Possible: {possible} ]
+obtaining more info
 {r.text}\n
 """)
+                        f.close()
+                        print("\u001b[32mwrote info in results.txt\u001b[31m")
+                        if platform.system() == "Windows":
+                            print(banner().banner)
+                        elif platform.system() == "Darwin":
+                            print(banner().banner.replace("windows", "darwin"))
+                        elif platform.system() == "Linux":
+                            print(banner().banner.replace("windows", "linux"))
+
+                        f.close()
+                        os.remove(".connection.txt")
+                elif (f.read() == "Not connected"):
+                    print("""[ Timezone: {time_zone} ]
+[ Carrier: {carrier_name} ]
+[ Region: ]
+[ Valid: {valid} ]
+[ Possible: {possible} ]
+obtaining more info internet not connected""")
+                    f = open("results.txt", "a")
+                    f.write(f"""Date: {time.ctime()}
+[ {phone} ]
+[ Timezone: {time_zone} ]
+[ Carrier: {carrier_name} ]
+[ Region: ]
+[ Valid: {valid} ]
+[ Possible: {possible} ]
+obtaining more info internet not connected so cannot obtain more info
+""")
                     f.close()
-                    print("\u001b[32mwrote info in results.txt\u001b[31m")
                     if platform.system() == "Windows":
                         print(banner().banner)
                     elif platform.system() == "Darwin":
                         print(banner().banner.replace("windows", "darwin"))
                     elif platform.system() == "Linux":
                         print(banner().banner.replace("windows", "linux"))
+                    os.remove(".connection.txt")
     except KeyboardInterrupt:
         if platform.system() == str("Windows"):
             os.system("echo %username% > .user.txt")
