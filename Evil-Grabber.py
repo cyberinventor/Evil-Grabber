@@ -59,12 +59,20 @@ def evil():
 \u001b[34m[\u001b[32m Possible: {possible} \u001b[34m]
 \u001b[33mobtaining more info\u001b[33m
 """)
-                r = requests.get(f"https://truecaller.shadowbrokers.repl.co/?phonenumber={phonenumber}")
+                r = requests.get(f"https://truecaller.shadowbrokers.repl.co/?phonenumber={phonenumber}&get_info=Submit")
                 if r.status_code == 200:
-                    r = requests.get("https://truecaller.shadowbrokers.repl.co/output.txt")
+                    r = requests.get(f"https://truecaller.shadowbrokers.repl.co/output.txt")
                     print(r.text, "\u001b[31m")
                     f = open("results.txt", "a")
-                    f.write(f"\n{r.text}\n")
+                    f.write(f"""[ {phone} ]
+[ Timezone: {time_zone} ]
+[ Carrier: {carrier_name} ]
+[ Region: {region} ]
+[ Valid: {valid} ]
+[ Possible {possible} ]
+{r.text}\n
+""")
+                    f.close()
                     print("\u001b[32mwrote info in results.txt\u001b[31m")
                     if platform.system() == "Windows":
                         print(banner().banner)
