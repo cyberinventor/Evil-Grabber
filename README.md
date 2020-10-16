@@ -24,5 +24,5 @@ install.bat
 ```
 # usage
 ```
-python3 Evil-Grabber.py
+python3 Hacker-Info.py
 ```
