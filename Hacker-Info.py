@@ -6,7 +6,6 @@ import requests
 import time
 import sys
 import keyboard
-import threading
 import pyfiglet
 from pyfiglet import Figlet
 
