@@ -31,4 +31,5 @@ python hacker-info.py
 # releases
 
 windows exe https://github.com/cyberinventor/Hacker-Info/releases/download/untagged-efa33aa1d8f3a2bd6086/hacker.info.exe
+<br/>
 linux executable 
