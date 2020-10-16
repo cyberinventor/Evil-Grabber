@@ -6,7 +6,7 @@ For now it will just be a tool that can get info about phonenumber
 ```
 
 # try or run on repl.it
-<a href="https://hacker-info.shadowbrokers.repl.run"/>run on repl.it</a>
+<a href="https://repl.it/@ShadowBrokers/hacker-info"/>run on repl.it</a>
 # Installation
 ```
 git clone https://github.com/cyberinventor/hacker-Info/
