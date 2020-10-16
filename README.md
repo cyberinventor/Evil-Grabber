@@ -14,11 +14,14 @@ cd Evil-Grabber
 ```
 pip3 install -r requirements.txt
 ```
-* to do it automatically and run the program automatically
+* to do it automatically and run the program automatically for linux or mac
 ```
 bash install.sh
 ```
-
+* to do it automatically and run the program automatically for windows
+```
+install.bat
+```
 # usage
 ```
 python3 Evil-Grabber.py
