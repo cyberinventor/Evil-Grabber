@@ -6,6 +6,7 @@ import requests
 import time
 import sys
 import keyboard
+import threading
 import pyfiglet
 from pyfiglet import Figlet
 
@@ -134,7 +135,7 @@ Unable to obtain more info no internet access
                 #print(f"\u001b[31m{result}")
                 result = pyfiglet.figlet_format(text, font="banner3-D")
                 print(result)
-            banner_plaform()
+                banner_plaform()
                 
     except KeyboardInterrupt:
         if platform.system() == str("Windows"):
