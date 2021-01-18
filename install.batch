@@ -1,2 +1,2 @@
 pip install -r requirements.txt
-python hacker-info.py
+python Evil-Grabber.py
