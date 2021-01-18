@@ -9,8 +9,8 @@ For now it will just be a tool that can get info about phonenumber
 <a href="https://repl.it/@ShadowBrokers/hacker-info" target="_blank">run on repl.it</a>
 # Installation
 ```
-git clone https://github.com/cyberinventor/hacker-Info/
-cd hacker-info
+git clone https://github.com/cyberinventor/Evil-Grabber/
+cd Eval-Grabber
 ```
 # you can now run the install.sh script or you can do it manually
 * to do it manully
