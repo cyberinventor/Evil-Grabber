@@ -27,12 +27,6 @@ install.bat
 ```
 # usage
 ```
-python3 hacker-info.py
-python hacker-info.py
+python3 Evil-Grabber.py
+python Evil-Grabber.py
 ```
-
-# releases
-
-windows executable https://github.com/cyberinventor/Hacker-Info/releases/download/untagged-efa33aa1d8f3a2bd6086/hacker.info.exe
-<br/>
-linux executable https://github.com/cyberinventor/hacker-info/releases/download/linux-version-1.0/hacker-info
