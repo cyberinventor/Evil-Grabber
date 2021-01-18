@@ -6,7 +6,7 @@ For now it will just be a tool that can get info about phonenumber
 ```
 
 # try or run on repl.it
-<a href="https://repl.it/@ShadowBrokers/hacker-info" target="_blank">run on repl.it</a>
+<a href="https://repl.it/@ShadowBrokers/Evil-Grabber" target="_blank">run on repl.it</a>
 # Installation
 ```
 git clone https://github.com/cyberinventor/Evil-Grabber/
